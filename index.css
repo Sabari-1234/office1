@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 body {
   --tw-bg-opacity: 1;
   background-color: rgb(82 82 91 / var(--tw-bg-opacity));
@@ -42,7 +45,7 @@ body {
   border-bottom-width: 5.5rem;
   border-left-width: 3rem /* 48px */;
   border-right-width: 3rem /* 48px */;
-  --tw-border-opacity: 1;
+  /* --tw-border-opacity: 1;
   border-top-color: rgb(59 130 246 / var(--tw-border-opacity));
   --tw-border-opacity: 1;
   border-right-color: rgb(59 130 246 / var(--tw-border-opacity));
@@ -50,7 +53,12 @@ body {
   border-bottom-color: rgb(255 255 255 / var(--tw-border-opacity));
   --tw-border-opacity: 1;
   border-left-color: rgb(255 255 255 / var(--tw-border-opacity));
-  padding-right: 0.75rem;
+  padding-right: 0.75rem; */
+  border-bottom-color: white;
+  border-left-color: white;
+  --tw-border-opacity: 1;
+  border-top-color: rgb(59 130 246 / var(--tw-border-opacity));
+  border-right-color: rgb(59 130 246 / var(--tw-border-opacity));
 }
 .i {
   width: 45%;
@@ -106,6 +114,32 @@ body {
 .w {
   font-weight: 700;
 }
+.x {
+  text-align: center;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+  box-shadow: 0 4px 8px rgba(1, 2, 2, 2);
+}
+.y {
+  box-shadow: 0 4px 8px rgba(1, 2, 2, 2);
+  display: flex;
+  justify-content: space-between;
+  border-bottom-width: 1px;
+  padding: 0.75rem;
+}
+.container {
+  width: 100%;
+}
+.z {
+  padding-left: 5rem /* 80px */;
+  padding-right: 5rem /* 80px */;
+  display: flex;
+  padding-top: 2rem /* 32px */;
+  padding-bottom: 2rem /* 32px */;
+  justify-content: center;
+  border-bottom-width: 4px;
+}
 @media (min-width: 640px) {
   .a {
     width: 100%;
@@ -134,6 +168,14 @@ body {
     height: 16px;
     top: 5.5rem /* 88px */;
   }
+  .container {
+    max-width: 640px;
+  }
+}
+.sign {
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+  font-weight: 700;
 }
 
 @media (min-width: 768px) {
@@ -146,10 +188,19 @@ body {
     padding-left: 3.5rem /* 56px */;
     padding-right: 3.5rem /* 56px */;
   }
+  .container {
+    max-width: 768px;
+  }
+  .z {
+    justify-content: flex-end;
+  }
 }
 @media (min-width: 1024px) {
   .a {
     width: 60%;
+  }
+  .container {
+    max-width: 1024px;
   }
 }
 
@@ -162,6 +213,9 @@ body {
   }
   .g {
     margin-top: 5rem;
+  }
+  .container {
+    max-width: 1280px;
   }
 }
 
@@ -178,5 +232,8 @@ body {
   .n {
     height: 20px;
     top: 7rem /* 112px */;
+  }
+  .container {
+    max-width: 1536px;
   }
 }

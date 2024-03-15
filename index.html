@@ -9,8 +9,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./output.css" />
   </head>
   <body>
     <div class="a">
@@ -38,7 +39,7 @@
           <p class="k"></p>
           <p style="margin-top: 0.5cm; color: white; font-weight: bold"></p>
 
-          <div>
+          <div style="position: relative; bottom: 1.25rem">
             <span style="color: white; font-weight: 700">Invoice No:</span>
             <span
               th:text="${invoiceData.invoiceNumber}"
@@ -85,50 +86,72 @@
           <!--                <th class="text-centre ps-4" style="width: 25%;">Price</th>-->
           <!--                <th class="text-centre pe-18" style="width: 20%;">Qty</th>-->
           <!--                <th class="text-centre pe-10+" style="width: 25%;">Total</th>-->
-          <tr
-            class="text-centre text-white"
-            style="
-              background-color: rgb(59 130 246 / var(--tw-bg-opacity));
-              box-shadow: 0 4px 8px rgba(1, 2, 2, 2);
-            "
-          >
-            <th class="p-4">Description</th>
-            <th class="ps-2">Price</th>
-            <th class="text-centre pe-18" style="width: 20%">Qty</th>
-            -->
-            <th class="text-centre pe-10+" style="width: 25%">Total</th>
+          <tr class="x">
+            <th style="padding: 1rem">Description</th>
+            <th style="padding-inline-start: 0.5rem">Price</th>
+            <th style="width: 20%">Qty</th>
+
+            <th style="width: 25%">Total</th>
           </tr>
           <!--            </tr>-->
 
           <tr
             th:each="lineItem : ${lineItems}"
-            class="text-center text-zinc-400 font-bold"
-            style="box-shadow: 0 4px 8px rgba(1, 1, 1, 2)"
+            style="
+              box-shadow: 0 4px 8px rgba(1, 1, 1, 2);
+              text-align: center;
+              --tw-text-opacity: 1;
+              color: rgb(161 161 170 / var(--tw-text-opacity));
+              font-weight: 700;
+            "
           >
             <!--                <td class="w-[25%] p-4" th:text="${lineItem.id}"></td>-->
             <td
-              class="w-[30%] p-2 text-center"
+              style="width: 30%; padding: 0.5rem; text-align: center"
               th:text="${lineItem.itemDescription}"
             ></td>
             <td
-              class="w-[15%] ps-2 text-center"
+              style="
+                width: 15%;
+                padding-inline-start: 0.5rem;
+                text-align: center;
+              "
               th:text="${lineItem.totalAmount}"
             ></td>
-            <td class="w-[18%] text-center" th:text="${lineItem.quantity}"></td>
-            <td class="text-center pe-4" th:text="${lineItem.totalAmount}"></td>
+            <td
+              style="width: 18%; text-align: center"
+              th:text="${lineItem.quantity}"
+            ></td>
+            <td
+              style="text-align: center; padding-inline-end: 1rem"
+              th:text="${lineItem.totalAmount}"
+            ></td>
           </tr>
 
           <!-- Operating Expenses -->
 
           <tr
-            class="text-center text-zinc-400 font-bold"
-            style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
+            style="
+              box-shadow: 0 4px 8px rgba(1, 2, 2, 2);
+              text-align: center;
+              --tw-text-opacity: 1;
+              color: rgb(161 161 170 / var(--tw-text-opacity));
+              font-weight: 700;
+            "
           >
-            <td class="w-[25%] p-4" style="padding-right: 20px">OPE Expense</td>
-            <td class="w-[30%] p-2 text-center"></td>
-            <td class="w-[13%] ps-2 text-center"></td>
+            <td style="padding-right: 20px; width: 25%; padding: 1rem">
+              OPE Expense
+            </td>
+            <td style="width: 30%; padding: 0.5rem; text-align: center"></td>
+            <td
+              style="
+                width: 13%;
+                padding-inline-start: 0.5rem;
+                text-align: center;
+              "
+            ></td>
             <!-- <td class="w-[500%] pe-4" th:text="${invoiceData.opeTotalAmount}"></td> -->
-            <td class="text-centre">50</td>
+            <td>50</td>
           </tr>
 
           <!--                <td class="w-[30%] p-2 text-center" th:text="Your Operating Expense Description"></td>-->
@@ -137,21 +160,37 @@
           <!--                <td class="text-center pe-4" th:text="Your Operating Expense Amount"></td>-->
         </table>
 
-        <div class="flex justify-between">
-          <div class="mt-2">
-            <p class="font-bold">Payment info:</p>
-            <p class="text-zinc-400">
+        <div style="display: flex; justify-content: space-between">
+          <div style="margin-top: 0.5rem">
+            <p style="font-weight: 700">Payment info:</p>
+            <p
+              style="
+                --tw-text-opacity: 1;
+                color: rgb(161 161 170 / var(--tw-text-opacity));
+              "
+            >
               Credit Card - <span th:text="${creditNoteNumber}"></span>
             </p>
-            <p class="text-zinc-400">
+            <p
+              style="
+                --tw-text-opacity: 1;
+                color: rgb(161 161 170 / var(--tw-text-opacity));
+              "
+            >
               Amount - <span th:text="${invoiceData.amount}"></span>
             </p>
           </div>
-          <div class="border w-[44%] total-section">
+          <div style="border-width: 1px; width: 44%">
             <!-- Display Subtotal -->
             <div
-              class="flex justify-between border-b p-3 font-bold"
-              style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
+              style="
+                box-shadow: 0 4px 8px rgba(1, 2, 2, 2);
+                display: flex;
+                justify-content: space-between;
+                border-bottom-width: 1px;
+                padding: 0.75rem;
+                font-weight: 700;
+              "
             >
               <p>
                 Subtotal:
@@ -160,10 +199,7 @@
             </div>
 
             <!-- Display Tax -->
-            <div
-              class="flex justify-between border-b p-3"
-              style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
-            >
+            <div class="y">
               <p>
                 Tax:
                 <span th:text="${totalTax}" style="padding-left: 10px"></span>
@@ -171,10 +207,7 @@
             </div>
 
             <!-- Display Discount -->
-            <div
-              class="flex justify-between border-b p-3"
-              style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
-            >
+            <div class="y">
               <p>
                 Discount:
                 <span
@@ -186,8 +219,14 @@
 
             <!-- Display Grand Total -->
             <div
-              class="flex justify-between border-b p-3 bg-blue-500 font-bold text-white"
-              style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
+              class="y"
+              style="
+                --tw-bg-opacity: 1;
+                background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+                font-weight: 700;
+                --tw-text-opacity: 1;
+                color: rgb(255 255 255 / var(--tw-text-opacity));
+              "
             >
               <p>
                 Grand Total:
@@ -197,41 +236,67 @@
           </div>
         </div>
 
-        <table class="ope-full">
-          <caption class="ext-center text-zinc-400 font-bold">
+        <table>
+          <caption
+            style="
+              --tw-text-opacity: 1;
+              color: rgb(161 161 170 / var(--tw-text-opacity));
+              font-weight: 700;
+            "
+          >
             Out of Pocket Expenses
           </caption>
           <tr
-            class="text-centre text-white"
             style="
+              --tw-text-opacity: 1;
+              color: rgb(255 255 255 / var(--tw-text-opacity));
               background-color: rgb(59 130 246 / var(--tw-bg-opacity));
               box-shadow: 0 4px 8px rgba(1, 2, 2, 2);
             "
           >
-            <th class="p-4">Description</th>
-            <th class="ps-2">Amount</th>
+            <th style="padding: 1rem">Description</th>
+            <th style="padding-inline-start: 0.5rem">Amount</th>
           </tr>
           <tr
             th:each="invoiceStatus : ${invoiceStatus}"
-            class="text-center text-zinc-400 font-bold"
-            style="box-shadow: 0 4px 8px rgba(1, 1, 1, 2)"
+            style="
+              box-shadow: 0 4px 8px rgba(1, 1, 1, 2);
+              text-align: center;
+              --tw-text-opacity: 1;
+              color: rgb(161 161 170 / var(--tw-text-opacity));
+              font-weight: 700;
+            "
           >
             <td
-              class="w-[30%] p-2 text-center"
+              style="width: 30%; padding: 0.5rem; text-align: center"
               th:text="${invoiceStatus.expenseDescription}"
             ></td>
             <td
-              class="w-[18%] ps-2 text-center"
+              style="
+                width: 18%;
+                padding-inline-start: 0.5rem;
+                text-align: center;
+              "
               th:text="${invoiceData.opeTotalAmount}"
             ></td>
           </tr>
         </table>
-        <div class="flex justify-between">
+        <div style="display: flex; justify-content: space-between">
           <div class="border w-[44%] total-section">
             <!-- Display OPE Total -->
             <div
-              class="flex justify-between border-b p-3 bg-blue-500 font-bold text-white"
-              style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
+              style="
+                box-shadow: 0 4px 8px rgba(1, 2, 2, 2);
+                display: flex;
+                justify-content: space-between;
+                border-bottom-width: 1px;
+                padding: 0.75rem;
+                --tw-bg-opacity: 1;
+                background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+                font-weight: 700;
+                --tw-text-opacity: 1;
+                color: rgb(255 255 255 / var(--tw-text-opacity));
+              "
             >
               <p>
                 Total Expenses:
@@ -246,44 +311,70 @@
 
         <div class="container">
           <!-- Tax Table -->
-          <div class="tax-table-container">
-            <table class="due-full">
-              <caption class="ext-center text-zinc-400 font-bold">
+          <div>
+            <table>
+              <caption
+                style="
+                  --tw-text-opacity: 1;
+                  color: rgb(161 161 170 / var(--tw-text-opacity));
+                  font-weight: 700;
+                "
+              >
                 Total Due
               </caption>
               <tr
-                class="text-centre text-white"
                 style="
                   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
                   box-shadow: 0 4px 8px rgba(1, 2, 2, 2);
+                  --tw-text-opacity: 1;
+                  color: rgb(255 255 255 / var(--tw-text-opacity));
                 "
               >
-                <th class="p-4">Total Before Tax</th>
-                <th class="ps-2">Total Tax</th>
+                <th style="padding: 1rem">Total Before Tax</th>
+                <th style="padding-inline-start: 0.5rem">Total Tax</th>
               </tr>
               <tr
                 th:each="tax : ${tax}"
-                class="text-center text-zinc-400 font-bold"
-                style="box-shadow: 0 4px 8px rgba(1, 1, 1, 2)"
+                style="
+                  box-shadow: 0 4px 8px rgba(1, 1, 1, 2);
+                  text-align: center;
+                  --tw-text-opacity: 1;
+                  color: rgb(161 161 170 / var(--tw-text-opacity));
+                  font-weight: 700;
+                "
               >
                 <td
-                  class="w-[30%] p-2 text-center"
                   th:text="${tax.taxAmount}"
+                  style="width: 30%; padding: 0.5rem; text-align: center"
                 ></td>
                 <td
-                  class="w-[18%] ps-2 text-center"
                   th:text="${tax.totalTax}"
+                  style="
+                    width: 18%;
+                    padding-inline-start: 0.5rem;
+                    text-align: center;
+                  "
                 ></td>
               </tr>
             </table>
           </div>
 
-          <div class="flex justify-between">
-            <div class="border w-[44%] total-section">
+          <div style="display: flex; justify-content: space-between">
+            <div style="border-width: 1px; width: 44%">
               <!-- Display Grand Total -->
               <div
-                class="flex justify-between border-b p-3 bg-blue-500 font-bold text-white"
-                style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  border-bottom-width: 1px;
+                  padding: 0.75rem;
+                  --tw-bg-opacity: 1;
+                  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+                  font-weight: 700;
+                  --tw-text-opacity: 1;
+                  color: rgb(255 255 255 / var(--tw-text-opacity));
+                  box-shadow: 0 4px 8px rgba(1, 2, 2, 2);
+                "
               >
                 <p>
                   Grand Total:
@@ -295,26 +386,37 @@
         </div>
       </div>
 
-      <div class="px-20 flex md:justify-end py-8 justify-center border-b-4">
+      <div class="z">
         <div>
-          <div class="text-lg font-bold">signature here</div>
-          <p class="text-zinc-400"></p>
-          <p class="font-[600]">Accounts Manger</p>
+          <div class="sign">signature here</div>
+          <p
+            style="
+              --tw-text-opacity: 1;
+              color: rgb(161 161 170 / var(--tw-text-opacity));
+            "
+          ></p>
+          <p style="font-weight: 600">Accounts Manger</p>
         </div>
       </div>
       <hr />
       <!-- footer -->
-      <footer class="px-17 pb-40">
-        <p class="text-center font-bold mt-5">Payment Information:</p>
-        <p class="text-center">
+      <footer style="padding-bottom: 10rem">
+        <p style="text-align: center; margin-top: 1.25rem; font-weight: 700">
+          Payment Information:
+        </p>
+        <p style="text-align: center">
           Please make the payment by the due date to avoid late fees.<br />
           Payment methods accepted: Bank Transfer, Check, Online Payment
           (specify details).
         </p>
 
         <p
-          style="margin-top: 5px; margin-left: 15px"
-          class="text-left font-bold"
+          style="
+            margin-top: 5px;
+            margin-left: 15px;
+            text-align: left;
+            font-weight: 700;
+          "
         >
           For Bank Transfer:
         </p>
@@ -327,12 +429,16 @@
         </p>
 
         <p
-          style="margin-top: 5px; margin-left: 195px"
-          class="text-left font-bold"
+          style="
+            margin-top: 5px;
+            margin-left: 195px;
+            text-align: left;
+            font-weight: 700;
+          "
         >
           Thank you for your business:
         </p>
-        <p class="text-center">
+        <p style="text-align: center">
           If you have any questions about this invoice<br />
           please contact [Your Name or Department] at [Your Email] or [Your
           Phone Number]<br />

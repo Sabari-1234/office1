@@ -34,6 +34,8 @@ body {
 .g {
   margin-top: 2.5rem;
 }
+
+/* have to change */
 .h {
   width: 10%;
   border-top-width: 5.5rem;
@@ -48,6 +50,61 @@ body {
   border-bottom-color: rgb(255 255 255 / var(--tw-border-opacity));
   --tw-border-opacity: 1;
   border-left-color: rgb(255 255 255 / var(--tw-border-opacity));
+  padding-right: 0.75rem;
+}
+.i {
+  width: 45%;
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+  text-align: end;
+}
+.j {
+  font-size: 30px;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.k {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.l {
+  margin-left: 1rem /* 16px */;
+  font-weight: 700;
+  color: white;
+}
+.m {
+  width: 100%;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  position: absolute;
+  top: 5rem /* 80px */;
+  height: 10px;
+}
+.n {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  position: absolute;
+  top: 5rem /* 80px */;
+  height: 10px;
+}
+.o {
+  padding-left: 1rem /* 16px */;
+  padding-right: 1rem /* 16px */;
+}
+.p {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem /* 12px */;
+}
+.q {
+  --tw-text-opacity: 1;
+  color: rgb(161 161 170 / var(--tw-text-opacity));
+}
+.w {
+  font-weight: 700;
 }
 @media (min-width: 640px) {
   .a {
@@ -59,6 +116,24 @@ body {
   .g {
     margin-top: 3rem;
   }
+  .i {
+    padding-right: 3.5rem;
+  }
+  .j {
+    font-size: 60px;
+    font-weight: 400;
+  }
+  .k {
+    margin-top: 1.5rem;
+  }
+  .m {
+    height: 16px;
+    top: 5.5rem /* 88px */;
+  }
+  .n {
+    height: 16px;
+    top: 5.5rem /* 88px */;
+  }
 }
 
 @media (min-width: 768px) {
@@ -66,6 +141,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .o {
+    padding-left: 3.5rem /* 56px */;
+    padding-right: 3.5rem /* 56px */;
   }
 }
 @media (min-width: 1024px) {
@@ -83,5 +162,21 @@ body {
   }
   .g {
     margin-top: 5rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .k {
+    margin-top: 3.2rem /* 51.2px */;
+    flex-direction: row;
+    gap: 1.2rem;
+  }
+  .m {
+    height: 20px;
+    top: 7rem /* 112px */;
+  }
+  .n {
+    height: 20px;
+    top: 7rem /* 112px */;
   }
 }

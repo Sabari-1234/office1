@@ -33,24 +33,18 @@
         </div>
         <div class="h"></div>
 
-        <div class="w-[45%] bg-blue-500 text-end sm:pr-14 pr-3">
-          <div
-            class="sm:text-[60px] text-[30px] sm:font-[400] font-bold text-white"
-          >
-            INVOICE
-          </div>
-          <p
-            class="2xl:mt-[3.2rem] sm:mt-6 mt-16 flex 2xl:gap-[1.20rem] flex-col 2xl:flex-row justify-end"
-          ></p>
+        <div class="i">
+          <div class="j">INVOICE</div>
+          <p class="k"></p>
           <p style="margin-top: 0.5cm; color: white; font-weight: bold"></p>
 
           <div>
-            <span class="font-bold" style="color: white">Invoice No:</span>
+            <span style="color: white; font-weight: 700">Invoice No:</span>
             <span
               th:text="${invoiceData.invoiceNumber}"
               style="color: white"
             ></span>
-            <span class="ml-4 font-bold" style="color: white">Date:</span>
+            <span class="l">Date:</span>
             <span
               th:text="${invoiceData.issuanceDate}"
               style="color: white"
@@ -58,30 +52,26 @@
           </div>
         </div>
       </div>
-      <div
-        class="w-full 2xl:h-[20px] sm:h-[16px] bg-white absolute 2xl:top-28 sm:top-[5.5rem] top-20 h-[10px]"
-      ></div>
+      <div class="m"></div>
 
-      <div
-        class="ope-full 2xl:h-[20px] sm:h-[16px] bg-white absolute 2xl:top-28 sm:top-[5.5rem] top-20 h-[10px]"
-      ></div>
+      <div class="ope-full n"></div>
       <!-- body -->
-      <div class="md:px-14 px-4">
-        <div class="flex justify-between mb-3">
+      <div class="o">
+        <div class="p">
           <div>
-            <p class="font-bold">Invoice To:</p>
-            <p class="text-zinc-400" th:text="${client.clientName}"></p>
-            <p class="text-zinc-400" th:text="${client.address}"></p>
-            <p class="text-zinc-400" th:text="${client.contactEmail}"></p>
+            <p class="w">Invoice To:</p>
+            <p class="q" th:text="${client.clientName}"></p>
+            <p class="q" th:text="${client.address}"></p>
+            <p class="q" th:text="${client.contactEmail}"></p>
           </div>
-          <div class="text-right">
-            <p class="font-bold">Pay to:</p>
-            <p class="text-zinc-400" th:text="${deal.dealName}"></p>
-            <p class="text-zinc-400" th:text="${deal.officeAddress}"></p>
-            <p class="text-zinc-400" th:text="${deal.mailId}"></p>
+          <div style="text-align: right">
+            <p class="w">Pay to:</p>
+            <p class="q" th:text="${deal.dealName}"></p>
+            <p class="q" th:text="${deal.officeAddress}"></p>
+            <p class="q" th:text="${deal.mailId}"></p>
           </div>
         </div>
-        <table class="w-full">
+        <table style="width: 100%">
           <!--            <tr class="text-centre text-white"-->
           <!--                style="background-color: rgb(59 130 246 / var(&#45;&#45;tw-bg-opacity)); box-shadow: 0 4px 8px rgba(1, 2, 2, 2);">-->
           <!--                <th class="text-centre ">Description</th>-->

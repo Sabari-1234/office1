@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:margin-right="http://www.w3.org/1999/xhtml"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="md:flex md:justify-center md:items-center bg-zinc-600 min-w-[445px]"
+  >
+    <div class="xl:w-[55%] lg:w-[60%] bg-white sm:w-full relative">
+      <div class="flex h-44 mb-5">
+        <div class="xl:w-[45%] sm:pl-14 pl-3 info-box">
+          <div class="text-[30px] font-bold">XXX</div>
+          <div class="text-[20px]">xxxx</div>
+          <div class="text-[15px]">xxx@123gmail.com</div>
+
+          <p class="xl:mt-20 sm:mt-12 mt-10">
+            <span class="font-bold">Payment Method:</span>
+            <span
+              th:text="${invoiceData.paymentMethod}"
+              class="text-zinc-400"
+            ></span>
+          </p>
+        </div>
+        <div
+          class="w-[10%] border-y-[5.5rem] border-x-[3rem] border-t-blue-500 border-r-blue-500 border-b-white border-l-white"
+        ></div>
+
+        <div class="w-[45%] bg-blue-500 text-end sm:pr-14 pr-3">
+          <div
+            class="sm:text-[60px] text-[30px] sm:font-[400] font-bold text-white"
+          >
+            INVOICE
+          </div>
+          <p
+            class="2xl:mt-[3.2rem] sm:mt-6 mt-16 flex 2xl:gap-[1.20rem] flex-col 2xl:flex-row justify-end"
+          ></p>
+          <p style="margin-top: 0.5cm; color: white; font-weight: bold"></p>
+
+          <div>
+            <span class="font-bold" style="color: white">Invoice No:</span>
+            <span
+              th:text="${invoiceData.invoiceNumber}"
+              style="color: white"
+            ></span>
+            <span class="ml-4 font-bold" style="color: white">Date:</span>
+            <span
+              th:text="${invoiceData.issuanceDate}"
+              style="color: white"
+            ></span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full 2xl:h-[20px] sm:h-[16px] bg-white absolute 2xl:top-28 sm:top-[5.5rem] top-20 h-[10px]"
+      ></div>
+
+      <div
+        class="ope-full 2xl:h-[20px] sm:h-[16px] bg-white absolute 2xl:top-28 sm:top-[5.5rem] top-20 h-[10px]"
+      ></div>
+      <!-- body -->
+      <div class="md:px-14 px-4">
+        <div class="flex justify-between mb-3">
+          <div>
+            <p class="font-bold">Invoice To:</p>
+            <p class="text-zinc-400" th:text="${client.clientName}"></p>
+            <p class="text-zinc-400" th:text="${client.address}"></p>
+            <p class="text-zinc-400" th:text="${client.contactEmail}"></p>
+          </div>
+          <div class="text-right">
+            <p class="font-bold">Pay to:</p>
+            <p class="text-zinc-400" th:text="${deal.dealName}"></p>
+            <p class="text-zinc-400" th:text="${deal.officeAddress}"></p>
+            <p class="text-zinc-400" th:text="${deal.mailId}"></p>
+          </div>
+        </div>
+        <table class="w-full">
+          <!--            <tr class="text-centre text-white"-->
+          <!--                style="background-color: rgb(59 130 246 / var(&#45;&#45;tw-bg-opacity)); box-shadow: 0 4px 8px rgba(1, 2, 2, 2);">-->
+          <!--                <th class="text-centre ">Description</th>-->
+          <!--                <th class="text-centre ps-4">Price</th>-->
+          <!--                <th class="text-centre pe-18">Qty</th>-->
+          <!--                <th class="text-centre pe-10+">Total</th>-->
+          <!--            </tr>-->
+
+          <!--            <tr class="text-centre text-white" style="background-color: rgb(59 130 246 / var(&#45;&#45;tw-bg-opacity)); box-shadow: 0 4px 8px rgba(1, 2, 2, 2);">-->
+          <!--                <th class="text-centre" style="width: 30%;">Description</th>-->
+          <!--                <th class="text-centre ps-4" style="width: 25%;">Price</th>-->
+          <!--                <th class="text-centre pe-18" style="width: 20%;">Qty</th>-->
+          <!--                <th class="text-centre pe-10+" style="width: 25%;">Total</th>-->
+          <tr
+            class="text-centre text-white"
+            style="
+              background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+              box-shadow: 0 4px 8px rgba(1, 2, 2, 2);
+            "
+          >
+            <th class="p-4">Description</th>
+            <th class="ps-2">Price</th>
+            <th class="text-centre pe-18" style="width: 20%">Qty</th>
+            -->
+            <th class="text-centre pe-10+" style="width: 25%">Total</th>
+          </tr>
+          <!--            </tr>-->
+
+          <tr
+            th:each="lineItem : ${lineItems}"
+            class="text-center text-zinc-400 font-bold"
+            style="box-shadow: 0 4px 8px rgba(1, 1, 1, 2)"
+          >
+            <!--                <td class="w-[25%] p-4" th:text="${lineItem.id}"></td>-->
+            <td
+              class="w-[30%] p-2 text-center"
+              th:text="${lineItem.itemDescription}"
+            ></td>
+            <td
+              class="w-[15%] ps-2 text-center"
+              th:text="${lineItem.totalAmount}"
+            ></td>
+            <td class="w-[18%] text-center" th:text="${lineItem.quantity}"></td>
+            <td class="text-center pe-4" th:text="${lineItem.totalAmount}"></td>
+          </tr>
+
+          <!-- Operating Expenses -->
+
+          <tr
+            class="text-center text-zinc-400 font-bold"
+            style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
+          >
+            <td class="w-[25%] p-4" style="padding-right: 20px">OPE Expense</td>
+            <td class="w-[30%] p-2 text-center"></td>
+            <td class="w-[13%] ps-2 text-center"></td>
+            <!-- <td class="w-[500%] pe-4" th:text="${invoiceData.opeTotalAmount}"></td> -->
+            <td class="text-centre">50</td>
+          </tr>
+
+          <!--                <td class="w-[30%] p-2 text-center" th:text="Your Operating Expense Description"></td>-->
+          <!--                <td class="w-[18%] ps-2 text-center" th:text="Your Operating Expense Amount"></td>-->
+          <!--                <td class="w-[18%] text-center" th:text="1"></td>-->
+          <!--                <td class="text-center pe-4" th:text="Your Operating Expense Amount"></td>-->
+        </table>
+
+        <div class="flex justify-between">
+          <div class="mt-2">
+            <p class="font-bold">Payment info:</p>
+            <p class="text-zinc-400">
+              Credit Card - <span th:text="${creditNoteNumber}"></span>
+            </p>
+            <p class="text-zinc-400">
+              Amount - <span th:text="${invoiceData.amount}"></span>
+            </p>
+          </div>
+          <div class="border w-[44%] total-section">
+            <!-- Display Subtotal -->
+            <div
+              class="flex justify-between border-b p-3 font-bold"
+              style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
+            >
+              <p>
+                Subtotal:
+                <span th:text="${subtotal}" style="padding-left: 10px"></span>
+              </p>
+            </div>
+
+            <!-- Display Tax -->
+            <div
+              class="flex justify-between border-b p-3"
+              style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
+            >
+              <p>
+                Tax:
+                <span th:text="${totalTax}" style="padding-left: 10px"></span>
+              </p>
+            </div>
+
+            <!-- Display Discount -->
+            <div
+              class="flex justify-between border-b p-3"
+              style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
+            >
+              <p>
+                Discount:
+                <span
+                  th:text="${invoiceData.discounts}"
+                  style="padding-left: 10px"
+                ></span>
+              </p>
+            </div>
+
+            <!-- Display Grand Total -->
+            <div
+              class="flex justify-between border-b p-3 bg-blue-500 font-bold text-white"
+              style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
+            >
+              <p>
+                Grand Total:
+                <span th:text="${grandTotal}" style="padding-left: 10px"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <table class="ope-full">
+          <caption class="ext-center text-zinc-400 font-bold">
+            Out of Pocket Expenses
+          </caption>
+          <tr
+            class="text-centre text-white"
+            style="
+              background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+              box-shadow: 0 4px 8px rgba(1, 2, 2, 2);
+            "
+          >
+            <th class="p-4">Description</th>
+            <th class="ps-2">Amount</th>
+          </tr>
+          <tr
+            th:each="invoiceStatus : ${invoiceStatus}"
+            class="text-center text-zinc-400 font-bold"
+            style="box-shadow: 0 4px 8px rgba(1, 1, 1, 2)"
+          >
+            <td
+              class="w-[30%] p-2 text-center"
+              th:text="${invoiceStatus.expenseDescription}"
+            ></td>
+            <td
+              class="w-[18%] ps-2 text-center"
+              th:text="${invoiceData.opeTotalAmount}"
+            ></td>
+          </tr>
+        </table>
+        <div class="flex justify-between">
+          <div class="border w-[44%] total-section">
+            <!-- Display OPE Total -->
+            <div
+              class="flex justify-between border-b p-3 bg-blue-500 font-bold text-white"
+              style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
+            >
+              <p>
+                Total Expenses:
+                <span
+                  th:text="${invoiceData.opeTotalAmount}"
+                  style="padding-left: 10px"
+                ></span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <!-- Tax Table -->
+          <div class="tax-table-container">
+            <table class="due-full">
+              <caption class="ext-center text-zinc-400 font-bold">
+                Total Due
+              </caption>
+              <tr
+                class="text-centre text-white"
+                style="
+                  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+                  box-shadow: 0 4px 8px rgba(1, 2, 2, 2);
+                "
+              >
+                <th class="p-4">Total Before Tax</th>
+                <th class="ps-2">Total Tax</th>
+              </tr>
+              <tr
+                th:each="tax : ${tax}"
+                class="text-center text-zinc-400 font-bold"
+                style="box-shadow: 0 4px 8px rgba(1, 1, 1, 2)"
+              >
+                <td
+                  class="w-[30%] p-2 text-center"
+                  th:text="${tax.taxAmount}"
+                ></td>
+                <td
+                  class="w-[18%] ps-2 text-center"
+                  th:text="${tax.totalTax}"
+                ></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="flex justify-between">
+            <div class="border w-[44%] total-section">
+              <!-- Display Grand Total -->
+              <div
+                class="flex justify-between border-b p-3 bg-blue-500 font-bold text-white"
+                style="box-shadow: 0 4px 8px rgba(1, 2, 2, 2)"
+              >
+                <p>
+                  Grand Total:
+                  <span th:text="${totalTax}" style="padding-left: 10px"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-20 flex md:justify-end py-8 justify-center border-b-4">
+        <div>
+          <div class="text-lg font-bold">signature here</div>
+          <p class="text-zinc-400"></p>
+          <p class="font-[600]">Accounts Manger</p>
+        </div>
+      </div>
+      <hr />
+      <!-- footer -->
+      <footer class="px-17 pb-40">
+        <p class="text-center font-bold mt-5">Payment Information:</p>
+        <p class="text-center">
+          Please make the payment by the due date to avoid late fees.<br />
+          Payment methods accepted: Bank Transfer, Check, Online Payment
+          (specify details).
+        </p>
+
+        <p
+          style="margin-top: 5px; margin-left: 15px"
+          class="text-left font-bold"
+        >
+          For Bank Transfer:
+        </p>
+        <p style="margin-left: 20px">
+          Account Name: [Your Company Name]<br />
+          Account Number: [123456789]<br />
+          Bank Name: [Bank Name]<br />
+          SWIFT/BIC: [Code]<br />
+          IBAN: [IBAN Number]
+        </p>
+
+        <p
+          style="margin-top: 5px; margin-left: 195px"
+          class="text-left font-bold"
+        >
+          Thank you for your business:
+        </p>
+        <p class="text-center">
+          If you have any questions about this invoice<br />
+          please contact [Your Name or Department] at [Your Email] or [Your
+          Phone Number]<br />
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

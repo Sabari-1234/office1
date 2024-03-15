@@ -10,28 +10,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./index.css" />
   </head>
-  <body
-    class="md:flex md:justify-center md:items-center bg-zinc-600 min-w-[445px]"
-  >
-    <div class="xl:w-[55%] lg:w-[60%] bg-white sm:w-full relative">
-      <div class="flex h-44 mb-5">
-        <div class="xl:w-[45%] sm:pl-14 pl-3 info-box">
-          <div class="text-[30px] font-bold">XXX</div>
-          <div class="text-[20px]">xxxx</div>
-          <div class="text-[15px]">xxx@123gmail.com</div>
+  <body>
+    <div class="a">
+      <div class="b">
+        <div class="c info-box">
+          <div class="d">XXX</div>
+          <div class="e">xxxx</div>
+          <div class="f">xxx@123gmail.com</div>
 
-          <p class="xl:mt-20 sm:mt-12 mt-10">
-            <span class="font-bold">Payment Method:</span>
+          <p class="g">
+            <span style="font-weight: 700">Payment Method:</span>
             <span
               th:text="${invoiceData.paymentMethod}"
-              class="text-zinc-400"
+              style="
+                --tw-text-opacity: 1;
+                color: rgb(161 161 170 / var(--tw-text-opacity));
+              "
             ></span>
           </p>
         </div>
-        <div
-          class="w-[10%] border-y-[5.5rem] border-x-[3rem] border-t-blue-500 border-r-blue-500 border-b-white border-l-white"
-        ></div>
+        <div class="h"></div>
 
         <div class="w-[45%] bg-blue-500 text-end sm:pr-14 pr-3">
           <div
